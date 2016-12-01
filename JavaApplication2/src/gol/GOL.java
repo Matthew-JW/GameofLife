@@ -12,7 +12,7 @@ package gol;
 public class GOL {
 
     /**asdf  safd asfsfda NEW
-     * @param args the command line arguments afdsfsad
+     * @param args the command line arguments afdsfsad NEW
      */
     public static void main(String[] args) {
         // TODO code application logic here
