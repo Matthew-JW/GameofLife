@@ -11,7 +11,7 @@ package gol;
  */
 public class GOL {
 
-    /**asdf  safd asfsfda NEW
+    /**asdf  safd asfsfda NEW NEW
      * @param args the command line arguments afdsfsad NEW NEW
      */
     public static void main(String[] args) {
