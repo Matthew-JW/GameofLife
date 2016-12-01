@@ -22,6 +22,17 @@ public class GameOfLife extends javax.swing.JFrame {
         initComponents();
         offScrImg = createImage(jPanel1.getWidth(),jPanel1.getHeight());
         offScrGraph = offScrImg.getGraphics();
+        Timer time = new Timer();
+        TimerTask tast = new TimerTask(){
+            public void run(){
+                for(int i = 0; i < hei; i++){
+                    for(int j = 0; j < wid; j++){
+                    
+                    }
+                }
+            }
+        };
+        time.scheduleAtFixedRate(tast, 0, 100);
         repain();
         
     }
@@ -29,14 +40,25 @@ public class GameOfLife extends javax.swing.JFrame {
     private void repain(){
         offScrGraph.setColor(jPanel1.getBackground());
         offScrGraph.fillRect(0,0,jPanel1.getWidth(),jPanel1.getHeight());
+        for(int i = 0;i<hei;i++){
+            for(int j=0;j<hei;j++){
+                if(currentMove[i][j]){
+                    offScrGraph.setColor(Color.red);
+                    int x = j * jPanel1.getWidth()/wid;
+                    int y = i * jPanel1.getHeight()/hei;
+                    offScrGraph.fillRect(x,y,jPanel1.getWidth()/wid,jPanel1.getHeight()/hei);
+                }
+            }
+        }
         offScrGraph.setColor(Color.black);
+        
         for(int i = 1; i  < hei;i++){
             int y = i * jPanel1.getHeight()/hei;
-            offScrGraph.drawLine(0,i,jPanel1.getWidth(),i);
+            offScrGraph.drawLine(0,y,jPanel1.getWidth(),y);
     }
         for(int j = 1; j < wid;j++){
             int x = j * jPanel1.getWidth()/wid;
-            offScrGraph.drawLine(x, 0, x, jPanel1.getWidth());
+            offScrGraph.drawLine(x, 0, x, jPanel1.getHeight());
         }
     
         jPanel1.getGraphics().drawImage(offScrImg,0,0,jPanel1);
@@ -118,7 +140,10 @@ public class GameOfLife extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // Play Button:
+        play = !play;
+        if(play) jButton1.setText("Pause");
+        else jButton1.setText("Play");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -126,6 +151,9 @@ public class GameOfLife extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        int j = wid * evt.getX() / jPanel1.getWidth();
+        int i = hei * evt.getY() / jPanel1.getHeight();
+        currentMove[i][j] = !currentMove[i][j];
         repain();
     }//GEN-LAST:event_jPanel1MouseClicked
 
