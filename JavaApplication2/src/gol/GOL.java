@@ -13,8 +13,8 @@ public class GOL {
 
     public static void main(String[] args) {
         GameOfLife life = new GameOfLife();
-        life.setLocation(0,0);
-        life.setVisible(true);
+        life.setLocation(null);
+        life.show();
         
     }
     
